@@ -8,6 +8,7 @@ const ora = require('ora');
 
 const headers = require('./data/headers');
 const students = require('./data/students');
+const print = require('./print.js');
 let defaultCSV = path.resolve('./data/G-30-Full-Stack-GT-July-2016.csv');
 
 cli
@@ -31,7 +32,7 @@ else if (cli.file && cli.file !== true) {
   .then(students => {
     let selected = selectStudents(students, numStudents);
 
-    printHeaderLine(countdown)
+    print.countdown(countdown, headers)
     .then(() => { fmtAndPrint(selected); });
   }).catch(error => console.log(error));
 }
@@ -40,13 +41,13 @@ else if (cli.file) {
   loadStudents(defaultCSV)
   .then(students => {
     let selected = selectStudents(students, numStudents);
-    printHeaderLine(countdown)
+    print.countdown(countdown, headers)
     .then(() => { fmtAndPrint(selected); });
   }).catch(error => console.log(error));
 }
 else {
   var selected = selectStudents(students, numStudents);
-  printHeaderLine(countdown)
+  print.countdown(countdown, headers)
   .then(() => { fmtAndPrint(selected); })
   .catch(err => console.log(err));
 }
@@ -71,42 +72,6 @@ function loadStudents(file) {
 function selectStudents(students, num) {
   var randomized = _.shuffle(students);
   return !num ? randomized.slice(0, 1) : randomized.slice(0, num);
-}
-
-function printHeaderLine(countdown) {
-  return new Promise(function(resolve, reject) {
-    var header = _.sample(headers);
-    var timeLeft = countdown;
-    var spinner = new ora({
-      text: spinnerText(timeLeft, header),
-      spinner: 'clock',
-      color: _.sample(['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray'])
-    });
-
-    // start with a newline
-    console.log();
-    spinner.start();
-    // save reference to clear the interval
-    // and update timeLeft for display
-    var interval = setInterval(() => {
-      --timeLeft;
-      spinner.text = spinnerText(timeLeft, header);
-    }, 1000);
-
-    // overall countdown timer to stop the spinner
-    setTimeout(() => {
-      spinner.text = spinnerText(0, header);
-      spinner.succeed();
-      clearInterval(interval);
-      resolve();
-    }, 3000);
-  });
-}
-
-function spinnerText(timeLeft, header) {
-  return timeLeft ?
-         '\t' + timeLeft + ' ' + colors.bold.underline(header + ':') + ' ' + timeLeft :
-         '\t  ' + colors.bold.underline(header + ':');
 }
 
 function fmtAndPrint(students) {
