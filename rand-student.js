@@ -22,7 +22,7 @@ let numStudents = cli.args[0] ? Number.parseInt(cli.args[0]): 1;
 let countdown = 3;
 
 if (cli.list) {
-  printRoster(students);
+  print.roster(students);
   return;
 }
 else if (cli.file && cli.file !== true) {
@@ -74,21 +74,14 @@ function selectStudents(students, num) {
   return !num ? randomized.slice(0, 1) : randomized.slice(0, num);
 }
 
-// function fmtAndPrint(students) {
+// Print student roster
+// function printRoster(students) {
+//   console.log('\n\t' + colors.bgCyan('Student Roster:'));
 //   students.forEach(student => {
 //     console.log('\t    ' + student);
 //   });
 //   console.log();
 // }
-
-// Print student roster
-function printRoster(students) {
-  console.log('\n\t' + colors.bgCyan('Student Roster:'));
-  students.forEach(student => {
-    console.log('\t    ' + student);
-  });
-  console.log();
-}
 
 // wrapper to ignore the other args passed by commander
 function getPath(input) {

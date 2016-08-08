@@ -48,7 +48,19 @@ function students(students) {
     console.log();
 }
 
+/* Print out the whole student roster.
+ */
+function roster(roster) {
+  let prefix = '\t    ';
+  console.log('\n\t' + colors.bgCyan('Student Roster:'));
+  roster.forEach(student => {
+    console.log(prefix + student);
+  });
+  console.log();
+}
+
 module.exports = {
   countdown: countdown,
-  students: students
+  students: students,
+  roster: roster
 };
