@@ -1,3 +1,4 @@
 node_modules/
 *.csv
 npm-debug.log
+data/students.json
