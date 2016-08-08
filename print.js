@@ -38,6 +38,17 @@ function countdown(countdown, headers) {
   }
 }
 
+/* Logs the selected students to the terminal.
+ */
+function students(students) {
+  let prefix = '\t    ';
+    students.forEach(student => {
+      console.log(prefix + student);
+    });
+    console.log();
+}
+
 module.exports = {
-  countdown: countdown
+  countdown: countdown,
+  students: students
 };

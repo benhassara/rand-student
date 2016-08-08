@@ -33,7 +33,7 @@ else if (cli.file && cli.file !== true) {
     let selected = selectStudents(students, numStudents);
 
     print.countdown(countdown, headers)
-    .then(() => { fmtAndPrint(selected); });
+    .then(() => { print.students(selected); });
   }).catch(error => console.log(error));
 }
 else if (cli.file) {
@@ -42,13 +42,13 @@ else if (cli.file) {
   .then(students => {
     let selected = selectStudents(students, numStudents);
     print.countdown(countdown, headers)
-    .then(() => { fmtAndPrint(selected); });
+    .then(() => { print.students(selected); });
   }).catch(error => console.log(error));
 }
 else {
   var selected = selectStudents(students, numStudents);
   print.countdown(countdown, headers)
-  .then(() => { fmtAndPrint(selected); })
+  .then(() => { print.students(selected); })
   .catch(err => console.log(err));
 }
 
@@ -74,12 +74,12 @@ function selectStudents(students, num) {
   return !num ? randomized.slice(0, 1) : randomized.slice(0, num);
 }
 
-function fmtAndPrint(students) {
-  students.forEach(student => {
-    console.log('\t    ' + student);
-  });
-  console.log();
-}
+// function fmtAndPrint(students) {
+//   students.forEach(student => {
+//     console.log('\t    ' + student);
+//   });
+//   console.log();
+// }
 
 // Print student roster
 function printRoster(students) {
