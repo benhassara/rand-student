@@ -1,5 +1,7 @@
 # `rand-student`
 
+[![asciicast](https://asciinema.org/a/493joa11cl31377l11hzzm53v.png)](https://asciinema.org/a/493joa11cl31377l11hzzm53v)
+
 ## Installation
 
 1. Clone the repo.
