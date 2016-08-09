@@ -4,9 +4,9 @@ const colors = require('colors');
 
 function countdown(countdown, headers) {
   return new Promise(function(resolve, reject) {
-    var header = _.sample(headers);
-    var timeLeft = countdown;
-    var spinner = new ora({
+    let header = _.sample(headers);
+    let timeLeft = countdown;
+    let spinner = new ora({
       text: spinnerText(timeLeft, header),
       spinner: 'clock',
       color: _.sample(['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray'])
@@ -17,7 +17,7 @@ function countdown(countdown, headers) {
     spinner.start();
     // save reference to clear the interval
     // and update timeLeft for display
-    var interval = setInterval(() => {
+    let interval = setInterval(() => {
       --timeLeft;
       spinner.text = spinnerText(timeLeft, header);
     }, 1000);
