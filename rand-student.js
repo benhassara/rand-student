@@ -13,10 +13,11 @@ cli
   .usage('<num> [options]')
   .option('-f, --file [file]', 'Specify a class roster CSV.', tools.getPath)
   .option('-l, --list', 'Print full list of students from file.')
+  .option('-c, --countdown <num>', 'Change the length of the countdown.')
   .parse(process.argv);
 
 let numStudents = cli.args[0] ? Number.parseInt(cli.args[0]): 1;
-let countdown = 3;
+let countdown = cli.countdown ? Number.parseInt(cli.countdown) : 3;
 
 if (cli.list) {
   print.roster(students);
