@@ -2,6 +2,7 @@
 const cli = require('commander');
 const path = require('path');
 const _ = require('lodash');
+const pkg = require('./package.json');
 const headers = require('./data/headers');
 const students = require('./data/students');
 const print = require('./util/print');
@@ -9,7 +10,7 @@ const tools = require('./util/tools');
 let defaultCSV = path.resolve('./data/G-30-Full-Stack-GT-July-2016.csv');
 
 cli
-  .version('1.0.0')
+  .version(pkg.version)
   .usage('<num> [options]')
   .option('-f, --file [file]', 'Specify a class roster CSV.', tools.getPath)
   .option('-l, --list', 'Print full list of students from file.')

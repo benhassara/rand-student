@@ -1,6 +1,6 @@
 {
   "name": "rand-student",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Randomly get a student name from the gSchool cohort manifest.",
   "main": "rand-student.js",
   "dependencies": {
