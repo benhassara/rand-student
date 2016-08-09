@@ -28,7 +28,7 @@ function countdown(countdown, headers) {
       spinner.succeed();
       clearInterval(interval);
       resolve();
-    }, 3000);
+    }, 1000 * countdown);
   });
   // helper to format the spinner's text
   function spinnerText(timeLeft, header) {
