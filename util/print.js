@@ -38,8 +38,7 @@ function countdown(countdown, headers) {
   }
 }
 
-/* Logs the selected students to the terminal.
- */
+// Logs the selected students to the terminal.
 function students(students) {
   let prefix = '\t    ';
     students.forEach(student => {
@@ -48,8 +47,7 @@ function students(students) {
     console.log();
 }
 
-/* Print out the whole student roster.
- */
+// Print out the whole student roster.
 function roster(roster) {
   let prefix = '\t    ';
   console.log('\n\t' + colors.bgCyan('Student Roster:'));
@@ -59,8 +57,21 @@ function roster(roster) {
   console.log();
 }
 
+/* Print chunked students
+ *    chunks = [[chunk1], [chunk2], ...] */
+function chunks(chunks) {
+  let prefix = '\t    ';
+  chunks.forEach((chunk, i) => {
+    let groupLn = colors.underline(`Group ${i + 1}:`)
+    console.log('\n\t' + groupLn);
+    console.log(`${prefix}${chunk.join('\n' + prefix)}`);
+  });
+  console.log();
+}
+
 module.exports = {
   countdown: countdown,
   students: students,
-  roster: roster
+  roster: roster,
+  chunks: chunks
 };
