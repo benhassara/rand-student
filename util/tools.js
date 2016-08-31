@@ -23,7 +23,19 @@ function getPath(input) {
   return path.resolve(input);
 }
 
+// Remove instructors from list so chunking works
+function removeInstructors(students) {
+  let instructors = [
+    'Wes Reid',
+    'Michael Herman',
+    'Rob Hajek',
+    'Ben Hassara'
+  ];
+  return students.filter(name => instructors.indexOf(name) === -1);
+}
+
 module.exports = {
   load: load,
-  getPath: getPath
+  getPath: getPath,
+  removeInstructors: removeInstructors
 };
